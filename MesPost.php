@@ -5,7 +5,27 @@ if(!isset($_POST['g-recaptcha-response'])) {
 }
 function getRealIp() {
 	//https://m.xp.cn/b.php/71754.html
-	return $_SERVER['HTTP_CF_CONNECTING_IP'];
+	if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
+		$ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+	} elseif ($_SERVER["HTTP_CLIENT_IP"]) {
+		$ip = $_SERVER["HTTP_CLIENT_IP"];
+	} elseif ($_SERVER["REMOTE_ADDR"]) {
+		$ip = $_SERVER["REMOTE_ADDR"];
+	} elseif (getenv("HTTP_X_FORWARDED_FOR")) {
+		$ip = getenv("HTTP_X_FORWARDED_FOR");
+	} elseif (getenv("HTTP_CLIENT_IP")) {
+		$ip = getenv("HTTP_CLIENT_IP");
+	} elseif (getenv("REMOTE_ADDR")) {
+		$ip = getenv("REMOTE_ADDR");
+	} else {
+		$ip = "Unknown";
+	}
+	if (strpos(",",$ip)!==0) {
+		$ips=explode(", ",$ip);
+		return $ips[0];
+	} else {
+		return $ip;
+	}
 }
 function send_post($url, $post_data) {
 	$postdata = http_build_query($post_data);
@@ -70,7 +90,7 @@ $MesContent = str_replace("操你妈", "***", $MesContent);
 $MesContent = str_replace("法轮", "**", $MesContent);
 
 //发送消息
-$sql = "INSERT INTO `". $dbname."`.`aec_mes` (`name`, `user_id`, `content`, `time`, `type`, `recipient`, `ip`) VALUES ('" . $name . "', '1', '" . $MesContent . "', '" . date("Y-m-d H:i:s") . "', 'mes', '#', '".$_SERVER["HTTP_CF_CONNECTING_IP"]."');";
+$sql = "INSERT INTO `". $dbname."`.`aec_mes` (`name`, `user_id`, `content`, `time`, `type`, `recipient`, `ip`) VALUES ('" . $name . "', '1', '" . $MesContent . "', '" . date("Y-m-d H:i:s") . "', 'mes', '#', '".getRealIp()."');";
 $rtn = $conn->query($sql);
 $conn->close();
 echo '{"status":"200","describe":"发送操作完成"}';
