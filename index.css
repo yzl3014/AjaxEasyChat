@@ -1,0 +1,101 @@
+body {
+    /*背景图片重复方式，此处为不重复*/
+    background-repeat: no-repeat;
+    /*背景图片起始位置，此处为居中*/
+    background-position: center;
+    /*背景图片尺寸，此处为填充模式*/
+    background-size: cover;
+    /*背景图片是否滚动，此处为不滚动*/
+    background-attachment: fixed;
+    /*设置背景图片*/
+    background-image: url("https://alpha-q3.sourcegcdn.com/2023/01/09/JXDQGv2m.jpg");
+}
+
+footer {
+    width: 100%;
+    bottom: 5.5px;
+    position: fixed;
+    color: whitesmoke;
+    text-align: center;
+    font-size: .6em;
+    letter-spacing: .2px;
+    text-shadow: 3px 3px 5px #708090;
+}
+
+.mainBox {
+    width: 70%;
+    height: 15em;
+    display: block;
+    margin: 0 auto;
+}
+
+.chatBox {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    border: 3px solid rgb(52, 141, 231);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    overflow: auto;
+    font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+.chatBox p {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+
+.textInputBox {
+    outline: none;
+    /*当获取焦点时（即光标在输入框内闪烁时），input的边框不加粗*/
+    width: 40%;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding-left: 8px;
+    border: 1px solid rgb(52, 141, 231);
+    border-radius: 5px;
+}
+
+.nameInputBox {
+    outline: none;
+    /*当获取焦点时（即光标在输入框内闪烁时），input的边框不加粗*/
+    width: 20%;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding-left: 8px;
+    border: 1px solid rgb(52, 141, 231);
+    border-radius: 5px;
+}
+
+.senderName {
+    color: rgb(0, 130, 254);
+}
+
+.senderTime {
+    float: right;
+    /*想要直接右对齐是不行的，需要float先让它“浮”起来，再移动*/
+    color: rgb(139, 139, 131);
+}
+
+.sendBtn {
+    float: right;
+    color: white;
+    background: rgb(52, 141, 231);
+    border: 0;
+    border-radius: 5px;
+    height: 30px;
+    width: 70px;
+}
+
+.sendBtn:hover {
+    background: rgb(0, 108, 216);
+}
+
+footer a {
+    color: #ff2377;
+}
+
+footer a:hover {
+    text-decoration: none;
+}
