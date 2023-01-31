@@ -67,6 +67,5 @@
 	<footer><a href="https://github.com/yzl3014/AjaxEasyChat">AjaxEasyChat</a> | By <a href="https://yuanzj.top">Yuanzj</a> | v1.0</footer>
 </body>
 <script src="/main.js"></script>
-</script>
 
 </html>
